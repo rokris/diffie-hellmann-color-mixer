@@ -1,12 +1,12 @@
 import tkinter as tk
 from tkinter import colorchooser
 
+
 class ColorMixerAppBob:
     def __init__(self, root):
         self.root = root
         self.root.title("Diffie-Hellman Color Mixer - Bob")
 
-        
         # Define labels for users
         self.label_public_color = tk.Label(root, text="Public Base Color (RGB):")
         self.label_public_color.grid(row=0, column=0, padx=10, pady=10)
@@ -18,13 +18,19 @@ class ColorMixerAppBob:
         self.label_alice_public.grid(row=2, column=0, padx=10, pady=10)
 
         # Buttons for selecting colors
-        self.button_select_public = tk.Button(root, text="Select Public Color", command=self.select_public_color)
+        self.button_select_public = tk.Button(
+            root, text="Select Public Color", command=self.select_public_color
+        )
         self.button_select_public.grid(row=0, column=1, padx=10, pady=10)
 
-        self.button_select_bob_input = tk.Button(root, text="Select Bob's Color", command=self.select_bob_input)
+        self.button_select_bob_input = tk.Button(
+            root, text="Select Bob's Color", command=self.select_bob_input
+        )
         self.button_select_bob_input.grid(row=1, column=1, padx=10, pady=10)
 
-        self.button_select_alice_public = tk.Button(root, text="Select Alice's Public Color", command=self.select_alice_public)
+        self.button_select_alice_public = tk.Button(
+            root, text="Select Alice's Public Color", command=self.select_alice_public
+        )
         self.button_select_alice_public.grid(row=2, column=1, padx=10, pady=10)
 
         # Labels to display colors
@@ -40,7 +46,9 @@ class ColorMixerAppBob:
         # Entry fields for RGB values
         self.public_color_entry = tk.Entry(root, width=20)
         self.public_color_entry.grid(row=0, column=3, padx=10, pady=10)
-        self.public_color_entry.bind("<Return>", lambda event: self.enter_public_color())
+        self.public_color_entry.bind(
+            "<Return>", lambda event: self.enter_public_color()
+        )
 
         self.bob_input_entry = tk.Entry(root, width=20)
         self.bob_input_entry.grid(row=1, column=3, padx=10, pady=10)
@@ -48,7 +56,9 @@ class ColorMixerAppBob:
 
         self.alice_public_entry = tk.Entry(root, width=20)
         self.alice_public_entry.grid(row=2, column=3, padx=10, pady=10)
-        self.alice_public_entry.bind("<Return>", lambda event: self.enter_alice_public())
+        self.alice_public_entry.bind(
+            "<Return>", lambda event: self.enter_alice_public()
+        )
 
         # Result Labels
         self.label_bob_public = tk.Label(root, text="Bob's Public Color (RGB):")
@@ -60,7 +70,9 @@ class ColorMixerAppBob:
         self.bob_public_color_display = tk.Label(root, width=20, height=2, bg="white")
         self.bob_public_color_display.grid(row=3, column=2, padx=10, pady=10)
 
-        self.public_secret_color_display = tk.Label(root, width=20, height=2, bg="white")
+        self.public_secret_color_display = tk.Label(
+            root, width=20, height=2, bg="white"
+        )
         self.public_secret_color_display.grid(row=4, column=2, padx=10, pady=10)
 
         self.bob_public_color_rgb = tk.Label(root, text="(255, 255, 255)")
@@ -133,7 +145,9 @@ class ColorMixerAppBob:
         if self.public_color and self.bob_input_color:
             # Mix public color with Bob's private color
             bob_public_color = self.mix_colors(self.public_color, self.bob_input_color)
-            self.bob_public_color_display.config(bg=self.rgb_to_tkcolor(bob_public_color))
+            self.bob_public_color_display.config(
+                bg=self.rgb_to_tkcolor(bob_public_color)
+            )
             self.bob_public_color_rgb.config(text=str(bob_public_color))
         else:
             self.bob_public_color_display.config(bg="white")
@@ -144,7 +158,9 @@ class ColorMixerAppBob:
             bob_public_color = self.parse_rgb(self.bob_public_color_rgb.cget("text"))
             public_secret = self.mix_colors(bob_public_color, self.alice_public_color)
             # Display the final public secret color
-            self.public_secret_color_display.config(bg=self.rgb_to_tkcolor(public_secret))
+            self.public_secret_color_display.config(
+                bg=self.rgb_to_tkcolor(public_secret)
+            )
             self.public_secret_color_rgb.config(text=str(public_secret))
 
     def mix_colors(self, color1, color2):
@@ -154,6 +170,7 @@ class ColorMixerAppBob:
     def rgb_to_tkcolor(self, rgb):
         """Convert an RGB tuple to a format suitable for Tkinter."""
         return "#%02x%02x%02x" % (int(rgb[0]), int(rgb[1]), int(rgb[2]))
+
 
 # Run the application
 if __name__ == "__main__":
