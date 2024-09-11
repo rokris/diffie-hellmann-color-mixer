@@ -62,7 +62,7 @@ jobs:
           cache: "pip" # caching pip dependencies
       - name: Install dependencies
         run: |
-          pip install --no-deps -r requirements.txt pyinstaller ${{ matrix.extra-deps }}
+          pip install --no-deps -r requirements.txt pyinstaller altgraph packaging ${{ matrix.extra-deps }}
       - name: Run PyInstaller (Windows)
         if: matrix.os == 'windows-latest'
         run: |
