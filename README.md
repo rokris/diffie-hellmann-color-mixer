@@ -1,4 +1,4 @@
-# SSL Certificate Validator [![Super-Linter](https://github.com/rokris/diffie-hellmann-color-mixer/actions/workflows/superlint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+# Diffie-Hellman Color Mixer [![Super-Linter](https://github.com/rokris/diffie-hellmann-color-mixer/actions/workflows/superlint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ## Features
 
